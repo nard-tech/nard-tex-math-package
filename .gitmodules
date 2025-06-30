@@ -1,0 +1,4 @@
+[submodule "nard-tech/nard-tex-math-package.git/package/nard-tex-textbook-package"]
+	path = package/nard-tex-textbook-package
+	url = git@github.com:nard-tech/nard-tex-textbook-package.git
+	branch = main
