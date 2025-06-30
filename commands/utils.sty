@@ -1,0 +1,173 @@
+% 数学記号
+% commands/utils.sty
+% https://github.com/nard-tech/nard-tex-math-package
+
+\usepackage{xparse} % for NewDocumentCommand
+\usepackage{ifthen}
+
+% 2乗
+\newcommand{\Square}[1]{{#1}^{2}}
+% -1乗
+\newcommand{\Inverse}[1]{{#1}^{-1}}
+% 平方根
+\NewDocumentCommand{\Sqrt}{o m}{%
+  \IfNoValueTF{#1}{%
+    \sqrt{#2}}{%
+    \sqrt[#1]{#2}% 「n乗根」のとき
+    }
+}
+% 絶対値（少し広め）
+\newcommand{\Abs}[1]{\left| \, #1 \, \right|}
+% 二項係数
+\newcommand{\Choose}[2]{{}_{#1} \mathrm{C}_{#2}}
+% 共役（少し広め）
+\newcommand{\Conjugate}[1]{\overline{ \, #1 \, }}
+% 括弧（少し広め）
+\newcommand{\Parentheses}[1]{\left( \, #1 \, \right)}
+% 数列
+\newcommand{\Sequence}[1]{ \left\{ #1 \right\} }
+
+% -------- 黒板太字
+
+% 自然数
+\newcommand{\Natural}{\mathbb{N}}
+% 整数
+\newcommand{\Zahlen}{\mathbb{Z}}
+% 有理数
+\newcommand{\Quotient}{\mathbb{Q}}
+% 実数
+\newcommand{\Real}{\mathbb{R}}
+% 複素数
+\newcommand{\Complex}{\mathbb{C}}
+% ベクトル空間
+\newcommand{\V}{\mathbb{V}}
+% 体
+\newcommand{\K}{\mathbb{K}}
+
+% -------- 点と座標
+
+% 点
+\NewDocumentCommand{\Point}{m o o o}{%
+  \mathrm{#1}%
+  \IfNoValueTF{#2}{%
+    % 第2引数が存在しないとき - 何もしない
+      }{%
+    % 第2引数が存在するとき
+      \IfNoValueTF{#3}{%
+        % 第3引数が存在しないとき
+          \left( #2 \right)}{%
+        % 第3引数が存在するとき
+          \IfNoValueTF{#4}{%
+            % 第4引数が存在しないとき
+              % \Coordinate{#2}{#3}}{%
+              \left( #2, #3 \right)}{%
+            % 第4引数が存在するとき
+              % \Coordinate{#2}{#3}{#4}}
+              \left( #2, #3, #4 \right)}
+      }
+  }
+}
+% 点（座標）
+\NewDocumentCommand{\Coordinate}{o o o}{%
+  \IfNoValueTF{#1}{%
+    % 第1引数が存在しないとき - 何もしない
+      }{%
+    % 第1引数が存在するとき
+      \IfNoValueTF{#2}{%
+        % 第2引数が存在しないとき
+          \bigl( #1 \bigr)}{%
+        % 第2引数が存在するとき
+          \IfNoValueTF{#3}{%
+            % 第3引数が存在しないとき
+              \bigl( #1, #2 \bigr)}{%
+            % 第3引数が存在するとき
+              \bigl( #1, #2, #3 \bigr)}
+      }
+  }
+}
+
+% -------- 関数
+
+% 指数関数
+\newcommand{\Exp}[1]{e^{#1}}
+
+% 1, 2, 3変数関数
+\NewDocumentCommand{\Function}{m o o o}{%
+  #1%
+  \IfNoValueTF{#2}{%
+    % 第2引数が存在しないとき - 何もしない
+      }{%
+    % 第2引数が存在するとき
+      \IfNoValueTF{#3}{%
+        % 第3引数が存在しないとき
+          \bigl( #2 \bigr)}{%
+        % 第3引数が存在するとき
+          \IfNoValueTF{#4}{%
+            % 第4引数が存在しないとき
+              \bigl( #2, #3 \bigr)}{%
+            % 第4引数が存在するとき
+              \bigl( #2, #3, #4 \bigr)}
+      }
+  }
+}
+
+% -------- 微分
+
+% 1階微分
+\newcommand{\Derivative}[1]{{#1}^{\prime}}
+% 2階微分
+\newcommand{\SecondDerivative}[1]{{#1}^{{\prime}{\prime}}}
+
+% 微分 - 1階微分...n階微分に対応
+\NewDocumentCommand{\df}{o m}{%
+  \IfNoValueTF{#1}{%
+    % 第1引数が存在しないとき - 1階微分
+    \mathit{d#2}
+  }{%
+    % 第1引数が存在するとき- n階微分
+    \mathit{d^{#1}#2}
+  }
+}
+
+% 微分 - 分数型表記 - 1階微分...n階微分に対応
+\NewDocumentCommand{\Df}{o m m}{%
+  \IfNoValueTF{#1}{%
+    % 第1引数が存在しないとき - 1階微分
+    \frac{\df{#2}}{\df{#3}}
+  }{%
+    % 第1引数が存在するとき- n階微分
+    \frac{\df[#1]{#2}}{\df{#3^{#1}}}
+  }
+}
+
+% -------- 偏微分
+
+% 偏微分 - 1階微分...n階微分に対応
+\NewDocumentCommand{\pdf}{o m}{%
+  \IfNoValueTF{#1}{%
+    % 第1引数が存在しないとき - 1階微分
+    \mathit{{\partial}#2}
+  }{%
+    % 第1引数が存在するとき- n階微分
+    \mathit{{\partial}^{#1}#2}
+  }
+}
+
+% 偏微分 - 分数型表記 - 1階偏微分...n階偏微分に対応
+\NewDocumentCommand{\Pdf}{o m m}{%
+  \IfNoValueTF{#1}{%
+    % 第1引数が存在しないとき - 1階偏微分
+    \frac{\pdf{#2}}{\pdf{#3}}
+  }{%
+    % 第1引数が存在するとき- （同じ変数での）n階微分
+    \frac{\pdf[#1]{#2}}{\pdf{#3^{#1}}}
+  }
+}
+
+% 偏微分 - 1階偏微分 熱力学でよく使う表記
+\newcommand{\Pdft}[3]{ {\left( \Pdf{#1}{#2} \right)}_{#3} }
+
+% 偏微分 - 分数型表記 - 2階偏微分（異なる変数で2回偏微分する場合）
+\newcommand{\Ppdf}[3]{%
+  \frac{\pdf[2]{#1}}{\pdf{#2}\pdf{#3}}
+}
