@@ -1,0 +1,79 @@
+% 教科書で使う見出し
+% commands/headers_ja.sty
+% https://github.com/nard-tech/nard-tex-math-package
+
+\usepackage{xparse} % for NewDocumentCommand
+\usepackage{txfonts} % textsf を正しく表示するため
+\usepackage{ifthen}
+
+% 公理 Axiom
+\NewDocumentCommand{\Axiom}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.67,1.00,0.85}{\,公理\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
+
+% 定義 Definition
+\NewDocumentCommand{\Def}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.67,1.00,0.85}{\,定義\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
+
+% 公式 Formula
+\NewDocumentCommand{\Formula}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.67,1.00,0.85}{\,公式\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
+
+% 定理 Theorem
+\NewDocumentCommand{\Th}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.85,1,1}{\,定理\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
+
+% 補題 Lemma
+\NewDocumentCommand{\Lem}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.85,1,1}{\,補題\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
+
+% 命題 Proposition
+\NewDocumentCommand{\Prop}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.85,1,1}{\,命題\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
+
+% 系 Corollary
+\NewDocumentCommand{\Cor}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.85,1,1}{\,\,\,\,系\,\,\,\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
+
+% 証明 Proof
+\NewDocumentCommand{\Pf}{D<>{} O{}}{%
+  \textgt{%
+    \colorbox[rgb]{0.9,0.9,0.9}{\,証明\,}%
+    \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
+    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+  }
+}
