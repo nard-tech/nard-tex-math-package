@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 
 \usepackage{commands/math_headers_ja}
+\usepackage{commands/operators}
 
 \title{nard-tex-math-package}
 \author{Fujita Shu}
@@ -113,4 +114,71 @@
     \item \verb|\Pf| - \Pf
   \end{itemize}
   も用いることができる。
+
+  \newpage
+
+  \section{commands/operators}
+
+  \verb|commands/operators| パッケージを読み込むと、以下のような数学の関数などのコマンドを使うことができる。
+
+  \subsection{三角関数}
+
+  \begin{itemize}
+    \item \verb|\cosec| - $ \cosec $
+  \end{itemize}
+
+  \subsection{逆三角関数}
+
+  \begin{itemize}
+    \item \verb|\Arcsin| - $ \Arcsin $
+    \item \verb|\Arccos| - $ \Arccos $
+    \item \verb|\Arctan| - $ \Arctan $
+    \item \verb|\Arccsc| - $ \Arccsc $
+    \item \verb|\Arcsec| - $ \Arcsec $
+    \item \verb|\Arccot| - $ \Arccot $
+  \end{itemize}
+
+  \subsection{双曲線関数}
+
+  \begin{itemize}
+    \item \verb|\cosech| - $ \cosech $
+    \item \verb|\csch| - $ \csch $
+    \item \verb|\sech| - $ \sech $
+  \end{itemize}
+
+  \subsection{ベクトル解析}
+
+  \begin{itemize}
+    \item \verb|\grad| - $ \grad $
+    \item \verb|\rot| - $ \rot $
+    \item \verb|\vdiv| - $ \vdiv $
+    \item \verb|\curl| - $ \curl $
+  \end{itemize}
+
+  \subsection{行列}
+
+  \begin{itemize}
+    \item \verb|\Tr| - $ \Tr $
+    \item \verb|\SO| - $ \SO $
+    \item \verb|\SU| - $ \SU $
+  \end{itemize}
+
+  \subsection{複素数}
+
+  \begin{itemize}
+    \item \verb|\re| - $ \re $
+    \item \verb|\im| - $ \im $
+  \end{itemize}
+
+  \textgt{注意}
+  \begin{quote}
+    \verb|\Re|, \verb|\Im| はすでに定義されており、$ \Re $, $ \Im $ となる。
+  \end{quote}
+
+  \subsection{その他の演算子など}
+
+  \begin{itemize}
+    \item \verb|\sumprime| - $ \sumprime $
+    \item \verb|\DefArrow| - $ \DefArrow $
+  \end{itemize}
 \end{document}
