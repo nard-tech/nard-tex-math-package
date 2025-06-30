@@ -1,0 +1,116 @@
+\documentclass[oneside,10pt,a4paper]{jsarticle}
+
+\usepackage[dvips]{graphicx}
+\usepackage[dvips]{graphicx,color}
+\usepackage{amsmath}
+
+\usepackage{commands/math_headers_ja}
+
+\title{nard-tex-math-package}
+\author{Fujita Shu}
+
+\begin{document}
+  \maketitle
+
+  \section{commands/math\_headers\_ja}
+
+  \verb|commands/math_headers_ja| パッケージを読み込むと、以下のような数学の教科書の見出しのコマンドを使うことができる。
+
+  \begin{itemize}
+    \item \verb|\Axiom|
+      \begin{itemize}
+        \item 引数なし (\verb|\Axiom|)
+          \begin{quote}
+            \Axiom
+          \end{quote}
+        \item \verb|<>| で囲った引数あり (\verb|\Axiom<1>|)
+          \begin{quote}
+            \Axiom<1>
+          \end{quote}
+        \item \verb|[]| で囲った引数あり (\verb|\Axiom[選択公理]|)
+          \begin{quote}
+            \Axiom[選択公理]
+          \end{quote}
+        \item \verb|<>| で囲った引数、\verb|[]| で囲った引数あり (\verb|\Axiom<1>[選択公理]|)
+          \begin{quote}
+            \Axiom<1>[選択公理]
+          \end{quote}
+        %
+      \end{itemize}
+    %
+    \item \verb|\Def|
+      \begin{itemize}
+        \item 引数なし (\verb|\Def|)
+          \begin{quote}
+            \Def
+          \end{quote}
+        \item \verb|<>| で囲った引数あり (\verb|\Def<2>|)
+          \begin{quote}
+            \Def<2>
+          \end{quote}
+        \item \verb|[]| で囲った引数あり (\verb|\Def[虚数]|)
+          \begin{quote}
+            \Def[虚数]
+          \end{quote}
+        \item \verb|<>| で囲った引数、\verb|[]| で囲った引数あり (\verb|\Def<2>[虚数]|)
+          \begin{quote}
+            \Def<2>[虚数]
+          \end{quote}
+        %
+      \end{itemize}
+    %
+    \newpage
+    %
+    \item \verb|\Formula|
+      \begin{itemize}
+        \item 引数なし (\verb|\Formula|)
+          \begin{quote}
+            \Formula
+          \end{quote}
+        \item \verb|<>| で囲った引数あり (\verb|\Formula<3>|)
+          \begin{quote}
+            \Formula<3>
+          \end{quote}
+        \item \verb|[]| で囲った引数あり (\verb|\Formula[積和・和積の公式]|)
+          \begin{quote}
+            \Formula[積和・和積の公式]
+          \end{quote}
+        \item \verb|<>| で囲った引数、\verb|[]| で囲った引数あり (\verb|\Formula<3>[積和・和積の公式]|)
+          \begin{quote}
+            \Formula<3>[積和・和積の公式]
+          \end{quote}
+        %
+      \end{itemize}
+    %
+    \item \verb|\Th|
+      \begin{itemize}
+        \item 引数なし (\verb|\Th|)
+          \begin{quote}
+            \Th
+          \end{quote}
+        \item \verb|<>| で囲った引数あり (\verb|\Th<4>|)
+          \begin{quote}
+            \Th<4>
+          \end{quote}
+        \item \verb|[]| で囲った引数あり (\verb|\Th[平均値の定理]|)
+          \begin{quote}
+            \Th[平均値の定理]
+          \end{quote}
+        \item \verb|<>| で囲った引数、\verb|[]| で囲った引数あり (\verb|\Th<4>[平均値の定理]|)
+          \begin{quote}
+            \Th<4>[平均値の定理]
+          \end{quote}
+        %
+      \end{itemize}
+    %
+  \end{itemize}
+
+  同様に、
+  \begin{itemize}
+    \item \verb|\Lem| - \Lem
+    \item \verb|\Prop| - \Prop
+    \item \verb|\Cor| - \Cor
+    \item \verb|\Pf| - \Pf
+  \end{itemize}
+  も用いることができる。
+\end{document}
