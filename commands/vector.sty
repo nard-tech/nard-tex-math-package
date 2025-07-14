@@ -1,0 +1,27 @@
+% 数学記号
+% commands/vector.sty
+% https://github.com/nard-tech/nard-tex-math-package
+
+% 矢印付きベクトル
+\newcommand{\VectorArrow}[1]{\overrightarrow{\mathstrut \mathrm{#1}}}
+
+% ノルム
+\newcommand{\Norm}[1]{ \parallel #1 \parallel }
+
+% 内積
+\newcommand{\InPr}[2]{ \left( #1, #2 \right) }
+
+% 列ベクトル（2行）
+\newcommand{\ColumnVectorDouble}[2]{ \left( \begin{array}{c} #1 \\ #2 \end{array} \right) }
+
+% 列ベクトル（3行）
+\newcommand{\ColumnVectorTriple}[3]{ \left( \begin{array}{c} #1 \\ #2 \\ #3 \end{array} \right) }
+
+% 行ベクトル（2列）
+\newcommand{\RowVectorDouble}[2]{ \left( \begin{array}{cc} #1 & #2 \end{array} \right) }
+
+% 行ベクトル（3列）
+\newcommand{\RowVectorTriple}[3]{ \left( \begin{array}{ccc} #1 & #2 & #3 \end{array} \right) }
+
+% スカラー3重積
+\newcommand{\ScalarTripleProduct}[3]{ \left[ #1, #2, #3 \right] }
