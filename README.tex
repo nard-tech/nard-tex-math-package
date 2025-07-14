@@ -6,7 +6,10 @@
 
 \usepackage{commands/math_headers_ja}
 \usepackage{commands/operators}
+\usepackage{commands/utils}
+
 \usepackage{package/nard-tex-textbook-package/commands/headers_ja}
+\usepackage{package/nard-tex-textbook-package/labelitem}
 
 \title{nard-tex-math-package}
 \author{Fujita Shu}
@@ -181,5 +184,248 @@
   \begin{itemize}
     \item \verb|\sumprime| - $ \sumprime $
     \item \verb|\DefArrow| - $ \DefArrow $
+  \end{itemize}
+
+  \newpage
+
+  \section{commands/utils}
+
+  \verb|commands/utils| パッケージを読み込むと、以下のような数学に関する便利なコマンドを使うことができる。
+
+  \begin{itemize}
+    \item \verb|\Square| - 2乗
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Square{x}| - $\Square{x}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Inverse| - -1乗
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Inverse{x}| - $\Inverse{x}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Sqrt| - 平方根、$n$乗根
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Sqrt{x}| - $\Sqrt{x}$
+          \item \verb|\Sqrt[n]{x}| - $\Sqrt[n]{x}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Abs| - 絶対値（少し広め）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Abs{x}| - $\Abs{x}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Choose| - 二項係数
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Choose{n}{k}| - $\Choose{n}{k}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Conjugate| - 共役（少し広め）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Conjugate{A}| - $\Conjugate{A}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Parentheses| - 括弧（少し広め）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Parentheses{x}| - $\Parentheses{x}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Sequence| - 数列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Sequence{a_n}| - $\Sequence{a_n}$
+        \end{itemize}
+      \end{quote}
+  \end{itemize}
+
+  \newpage
+
+  \subsection{黒板太字}
+
+  \begin{itemize}
+    \item 自然数 - \verb|\Natural| - $\Natural$
+    \item 整数 - \verb|\Zahlen| - $\Zahlen$
+    \item 有理数 - \verb|\Quotient| - $\Quotient$
+    \item 実数 - \verb|\Real| - $\Real$
+    \item 複素数 - \verb|\Complex| - $\Complex$
+    \item ベクトル空間 - \verb|\V| - $\V$
+    \item 体 - \verb|\K| - $\K$
+  \end{itemize}
+
+  \subsection{点と座標}
+
+  \begin{itemize}
+    \item \verb|\Point| - 点
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Point{P}| - $\Point{P}$
+          \item \verb|\Point{P}[a]| - $\Point{P}[a]$
+          \item \verb|\Point{P}[1][2]| - $\Point{P}[1][2]$
+          \item \verb|\Point{P}[1][2][3]| - $\Point{P}[1][2][3]$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Coordinate| - 座標
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item 2次元 - \verb|\Coordinate[1][2]| - $\Coordinate[1][2]$
+          \item 3次元 - \verb|\Coordinate[3][4][5]| - $\Coordinate[3][4][5]$
+        \end{itemize}
+      \end{quote}
+    %
+  \end{itemize}
+
+  \subsection{関数}
+
+  \begin{itemize}
+    \item \verb|\Exp| - 指数関数
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Exp{x}| - $\Exp{x}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Function| - 一般の関数
+      \begin{quote}
+        3変数関数まで対応している。\\[6pt]
+        \Example
+        \begin{itemize}
+          \item \verb|\Function{f}[x]| - $\Function{f}[x]$
+          \item \verb|\Function{f}[x][y]| - $\Function{f}[x][y]$
+          \item \verb|\Function{f}[x][y][z]| - $\Function{f}[x][y][z]$
+        \end{itemize}
+      \end{quote}
+    %
+  \end{itemize}
+
+  \newpage
+
+  \subsection{微分}
+
+  \begin{itemize}
+    \item \verb|\df|
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\df{}| - $\df{}$
+          \item \verb|\df{x}| - $\df{x}$
+          \item \verb|\df{f}| - $\df{f}$
+          \item \verb|\df[2]{}| - $\df[2]{}$
+          \item \verb|\df[2]{x}| - $\df[2]{x}$（\verb|\df{x^2}| と異なることに注意）
+          \item \verb|\df{x^2}| - $\df[2]{x^2}$（\verb|\df[2]{x}| と異なることに注意）
+          \item \verb|\df[n]{}| - $\df[n]{}$
+          \item \verb|\df[n]{f}| - $\df[n]{f}$
+          \item \verb|\int_{0}^{1} x^{2} \df{x}| - $\displaystyle \int_{0}^{1} x^{2} \df{x}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Df|
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Df{}| - $\displaystyle \Df{}{x}$ \\[-6pt]
+          \item \verb|\Df[2]{}{x}| - $\displaystyle \Df[2]{}{x}$ \\[-6pt]
+          \item \verb|\Df[n]{}{x}| - $\displaystyle \Df[n]{}{x}$ \\[-6pt]
+          \item \verb|\Df{f}{x}| - $\displaystyle \Df{f}{x}$ \\[-6pt]
+          \item \verb|\Df[2]{f}{x}| - $\displaystyle \Df[2]{f}{x}$ \\[-6pt]
+          \item \verb|\Df[n]{f}{x}| - $\displaystyle \Df[n]{f}{x}$ \\[-6pt]
+          \item 他のコマンドとの組み合わせ
+            \begin{itemize}
+              \item \verb|\Df{}{x} \Function{f}[x]| - $\displaystyle \Df{}{x} \Function{f}[x]$ \\[-6pt]
+              \item \verb|\Df[2]{}{x} \Function{f}[x]| - $\displaystyle \Df[2]{}{x} \Function{f}[x]$ \\[-6pt]
+              \item \verb|\Df{\Function{f}[x]}{x}| - $\displaystyle \Df{\Function{f}[x]}{x}$ \\[-6pt]
+              \item \verb|\Function{\Df{f}{x}}[x]| - $\displaystyle \Function{\Df{f}{x}}[x]$
+            \end{itemize}
+          %
+        \end{itemize}
+      \end{quote}
+    %
+  \end{itemize}
+
+  \newpage
+
+  \subsection{偏微分}
+
+  \begin{itemize}
+    \item \verb|\pdf|
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\pdf{}| - $\pdf{}$
+          \item \verb|\pdf{x}| - $\pdf{x}$
+          \item \verb|\pdf{f}| - $\pdf{f}$
+          \item \verb|\pdf[2]{}| - $\pdf[2]{}$
+          \item \verb|\pdf[2]{x}| - $\pdf[2]{x}$（\verb|\pdf{x^2}| と異なることに注意）
+          \item \verb|\pdf{x^2}| - $\pdf[2]{x^2}$（\verb|\pdf[2]{x}| と異なることに注意）
+          \item \verb|\pdf[n]{}| - $\pdf[n]{}$
+          \item \verb|\pdf[n]{f}| - $\pdf[n]{f}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Pdf| - 分数型表記 - 1階偏微分...n階偏微分に対応
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Pdf{}| - $\displaystyle \Pdf{}{x}$ \\[-6pt]
+          \item \verb|\Pdf[2]{}{x}| - $\displaystyle \Pdf[2]{}{x}$ \\[-6pt]
+          \item \verb|\Pdf[n]{}{x}| - $\displaystyle \Pdf[n]{}{x}$ \\[-6pt]
+          \item \verb|\Pdf{f}{x}| - $\displaystyle \Pdf{f}{x}$ \\[-6pt]
+          \item \verb|\Pdf[2]{f}{x}| - $\displaystyle \Pdf[2]{f}{x}$ \\[-6pt]
+          \item \verb|\Pdf[n]{f}{x}| - $\displaystyle \Pdf[n]{f}{x}$ \\[-6pt]
+          \item 他のコマンドとの組み合わせ
+            \begin{itemize}
+              \item \verb|\Pdf{}{x} \Function{f}[x][y]| - $\displaystyle \Pdf{}{x} \Function{f}[x][y]$ \\[-6pt]
+              \item \verb|\Pdf[2]{}{x} \Function{f}[x][y]| - $\displaystyle \Pdf[2]{}{x} \Function{f}[x][y]$ \\[-6pt]
+              \item \verb|\Pdf{\Function{f}[x][y]}{x}| - $\displaystyle \Pdf{\Function{f}[x][y]}{x}$ \\[-6pt]
+              \item \verb|\Function{\Pdf{f}{x}}[x][y]| - $\displaystyle \Function{\Pdf{f}{x}}[x][y]$
+            \end{itemize}
+          %
+        \end{itemize}
+        \quad \\
+      \end{quote}
+    %
+    \item \verb|\Pdft| - 1階偏微分 熱力学でよく使う表記
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Pdft{z}{x}{y}| - $\displaystyle \Pdft{z}{x}{y}$ \\[-6pt]
+          \item \verb|\Pdft{p}{S}{V}| - $\displaystyle \Pdft{p}{S}{V}$
+        \end{itemize}
+        \quad \\
+      \end{quote}
+    %
+    \item \verb|\Ppdf| - 分数型表記 - 2階偏微分（異なる変数で2回偏微分する場合）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Ppdf{}{x}{y} \Function{f}[x][y]| - $\displaystyle \Ppdf{}{x}{y} \Function{f}[x][y]$ \\[-6pt]
+          \item \verb|\Ppdf{\Function{f}[x][y]}{x}{y}| - $\displaystyle \Ppdf{\Function{f}[x][y]}{x}{y}$
+        \end{itemize}
+        \quad \\
+      \end{quote}
   \end{itemize}
 \end{document}
