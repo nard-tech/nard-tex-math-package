@@ -7,6 +7,7 @@
 \usepackage{commands/math_headers_ja}
 \usepackage{commands/operators}
 \usepackage{commands/utils}
+\usepackage{commands/vector}
 \usepackage{frac_style}
 
 \usepackage{package/nard-tex-textbook-package/commands/headers_ja}
@@ -428,5 +429,87 @@
         \end{itemize}
         \quad \\
       \end{quote}
+  \end{itemize}
+
+  \newpage
+
+  \section{commands/vector}
+
+  \verb|commands/vector| パッケージを読み込むと、以下のようなベクトルに関するコマンドを使うことができる。
+
+  \begin{itemize}
+    \item \verb|\VectorArrow| - 矢印付きベクトル
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\VectorArrow{a}| - $\VectorArrow{a}$
+          \item \verb|\VectorArrow{a} + \VectorArrow{b}| - $\VectorArrow{a} + \VectorArrow{b}$
+        \end{itemize}
+        \,
+      \end{quote}
+    %
+    \item \verb|\Norm| - ノルム
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Norm{a}| - $\Norm{a}$
+        \end{itemize}
+        \,
+      \end{quote}
+    %
+    \item \verb|\InPr| - 内積
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\InPr{\mathbf{a}}{\mathbf{b}}| - $\InPr{\mathbf{a}}{\mathbf{b}}$
+        \end{itemize}
+        \,
+      \end{quote}
+    %
+    \item \verb|\ColumnVectorDouble| - 列ベクトル（2行）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ColumnVectorDouble{1}{2}| - $\ColumnVectorDouble{1}{2}$
+        \end{itemize}
+        \,
+      \end{quote}
+    %
+    \item \verb|\ColumnVectorTriple| - 列ベクトル（3行）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ColumnVectorTriple{1}{2}{3}| - $\ColumnVectorTriple{1}{2}{3}$
+        \end{itemize}
+        \,
+      \end{quote}
+    %
+    \item \verb|\RowVectorDouble| - 行ベクトル（2列）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\RowVectorDouble{1}{2}| - $\RowVectorDouble{1}{2}$
+        \end{itemize}
+        \,
+      \end{quote}
+    %
+    \item \verb|\RowVectorTriple| - 行ベクトル（3列）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\RowVectorTriple{1}{2}{3}| - $\RowVectorTriple{1}{2}{3}$
+        \end{itemize}
+        \,
+      \end{quote}
+    %
+    \item \verb|\ScalarTripleProduct| - スカラー3重積
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ScalarTripleProduct{\VectorArrow{a}}{\VectorArrow{b}}{\VectorArrow{c}}| - \\ $\ScalarTripleProduct{\VectorArrow{a}}{\VectorArrow{b}}{\VectorArrow{c}}$
+        \end{itemize}
+        % \,
+      \end{quote}
+    %
   \end{itemize}
 \end{document}
