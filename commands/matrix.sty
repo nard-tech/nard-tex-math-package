@@ -1,0 +1,225 @@
+% 行列
+% commands/matrix.sty
+% https://github.com/nard-tech/nard-tex-math-package
+
+\usepackage{xparse} % for NewDocumentCommand
+
+% 大きな O など
+\newcommand{\hsymb}[1]{\mbox{\strut\rlap{\smash{\Large$#1$}}\quad}}
+
+% 「m × n 行列」
+\newcommand{\MatrixSize}[2]{$ #1 \times #2 $行列}
+
+% 丸括弧付き行列
+\newcommand{\Pmatrix}[1]{\left( #1 \right)}
+
+% 行列の成分
+\newcommand{\MatrixElement}[2]{\left( #1 , #2 \right)}
+
+% 行列式
+\newcommand{\Det}[1]{\det #1}
+
+% トレース
+\newcommand{\Tr}[1]{\Trace #1}
+
+% 転置行列
+% cf. https://qiita.com/hari64/items/3f973625551fbce3a08a
+% cf. https://blog.browniealice.net/post/latex_transpose/
+\newcommand{\TransposedMatrix}[1]{{#1}^{\mathsf{T}}}
+
+% 随伴行列
+\newcommand{\AdjointMatrix}[1]{{#1}^{\ast}}
+
+% -------- 2次行列
+
+% 2次正方行列
+\NewDocumentCommand{\SecondSquareMatrix}{O{cc} m m m m}{%
+  \Pmatrix{
+    \begin{array}{#1}
+      #2 & #3 \\[3pt]
+      #4 & #5
+    \end{array}
+  }
+}
+
+\NewDocumentCommand{\SecondSquareMatrixR}{m m m m}{%
+  \SecondSquareMatrix[rr]{#1}{#2}{#3}{#4}
+}
+
+% 2次単位行列
+\newcommand{\SecondUnitMatrix}{%
+  \SecondSquareMatrix{%
+    1}{0}{%
+    0}{1%
+  }
+}
+
+% 2次正方行列（標準）
+\newcommand{\SecondSquareMatrixGeneral}[1]{%
+  \SecondSquareMatrix{%
+    {#1}_{11}}{{#1}_{12}}{%
+    {#1}_{21}}{{#1}_{22}%
+  }
+}
+
+% 2次正方行列（標準・転置）
+\newcommand{\SecondSquareMatrixGeneralTransposed}[1]{%
+  \SecondSquareMatrix{%
+    {#1}_{11}}{{#1}_{21}}{%
+    {#1}_{12}}{{#1}_{22}%
+  }
+}
+
+% 2次正方行列（標準・和）
+\newcommand{\SecondSquareMatrixGeneralSum}[2]{%
+  \SecondSquareMatrix{%
+    {#1}_{11} + {#2}_{11}}{{#1}_{12} + {#2}_{12}}{%
+    {#1}_{21} + {#2}_{21}}{{#1}_{22} + {#2}_{22}%
+  }
+}
+
+% -------- 3次正方行列
+
+% 3次正方行列
+\newcommand{\ThirdSquareMatrix}[9]{%
+  \Pmatrix{
+    \begin{array}{ccc}
+      #1 & #2 & #3 \\[3pt]
+      #4 & #5 & #6 \\[3pt]
+      #7 & #8 & #9
+    \end{array}
+  }
+}
+
+\newcommand{\ThirdSquareMatrixR}[9]{%
+  \Pmatrix{
+    \begin{array}{rrr}
+      #1 & #2 & #3 \\[3pt]
+      #4 & #5 & #6 \\[3pt]
+      #7 & #8 & #9
+    \end{array}
+  }
+}
+
+% 3次単位行列
+\newcommand{\ThirdUnitMatrix}{%
+  \ThirdSquareMatrix{%
+    1}{0}{0}{%
+    0}{1}{0}{%
+    0}{0}{1%
+  }
+}
+
+% 3次正方行列（標準）
+\newcommand{\ThirdSquareMatrixGeneral}[1]{%
+  \ThirdSquareMatrix{%
+    {#1}_{11}}{{#1}_{12}}{{#1}_{13}}{%
+    {#1}_{21}}{{#1}_{22}}{{#1}_{23}}{%
+    {#1}_{31}}{{#1}_{32}}{{#1}_{33}}
+}
+
+% 3次正方行列（標準・転置）
+\newcommand{\ThirdSquareMatrixGeneralTransposed}[1]{
+  \ThirdSquareMatrix{%
+    {#1}_{11}}{{#1}_{21}}{{#1}_{31}}{%
+    {#1}_{12}}{{#1}_{22}}{{#1}_{32}}{%
+    {#1}_{13}}{{#1}_{23}}{{#1}_{33}}
+  }
+
+% 3次正方行列（標準・和）
+\newcommand{\ThirdSquareMatrixGeneralSum}[2]{
+  \ThirdSquareMatrix{%
+    {#1}_{11} + {#2}_{11}}{{#1}_{12} + {#2}_{12}}{{#1}_{13} + {#2}_{13}}{%
+    {#1}_{21} + {#2}_{21}}{{#1}_{22} + {#2}_{22}}{{#1}_{23} + {#2}_{23}}{%
+    {#1}_{31} + {#2}_{31}}{{#1}_{32} + {#2}_{32}}{{#1}_{33} + {#2}_{33}}
+  }
+
+% 3次正方行列 行列式（標準）
+\newcommand{\ThirdDeterminantGeneral}[1]{
+  {#1}_{11} {#1}_{22} {#1}_{33} %
+  + {#1}_{12} {#1}_{23} {#1}_{31} %
+  + {#1}_{13} {#1}_{21} {#1}_{32} %
+  - {#1}_{13} {#1}_{22} {#1}_{31} %
+  - {#1}_{12} {#1}_{21} {#1}_{33} %
+  - {#1}_{11} {#1}_{23} {#1}_{32}
+}
+
+% 3次正方行列 小行列式
+\newcommand{\ThirdMinorDeterminantIi}[1]{{#1}_{22} {#1}_{33} - {#1}_{23} {#1}_{32}}
+\newcommand{\ThirdMinorDeterminantIii}[1]{{#1}_{21} {#1}_{33} - {#1}_{23} {#1}_{31}}
+\newcommand{\ThirdMinorDeterminantIiii}[1]{{#1}_{21} {#1}_{32} - {#1}_{22} {#1}_{31}}
+\newcommand{\ThirdMinorDeterminantIIi}[1]{{#1}_{12} {#1}_{33} - {#1}_{13} {#1}_{32}}
+\newcommand{\ThirdMinorDeterminantIIii}[1]{{#1}_{11} {#1}_{33} - {#1}_{13} {#1}_{31}}
+\newcommand{\ThirdMinorDeterminantIIiii}[1]{{#1}_{11} {#1}_{32} - {#1}_{12} {#1}_{31}}
+\newcommand{\ThirdMinorDeterminantIIIi}[1]{{#1}_{12} {#1}_{23} - {#1}_{13} {#1}_{22}}
+\newcommand{\ThirdMinorDeterminantIIIii}[1]{{#1}_{11} {#1}_{23} - {#1}_{13} {#1}_{21}}
+\newcommand{\ThirdMinorDeterminantIIIiii}[1]{{#1}_{11} {#1}_{22} - {#1}_{12} {#1}_{21}}
+
+% -------- n 次正方行列
+
+% n 次正方行列（一般）
+\newcommand{\NthSquareMatrix}[9]{
+  \Pmatrix{
+    \begin{array}{cccc}
+      #1      & #2      & \cdots & #3 \\[3pt]
+      #4      & #5      & \cdots & #6 \\[3pt]
+      \vdots  & \vdots  & \ddots & \vdots \\[3pt]
+      #7      & #8      & \cdots & #9
+    \end{array}
+  }
+}
+
+% n 次正方行列（一般・右揃え）
+\newcommand{\NthSquareMatrixR}[9]{
+  \Pmatrix{
+    \begin{array}{rrrr}
+      #1      & #2      & \cdots & #3 \\[3pt]
+      #4      & #5      & \cdots & #6 \\[3pt]
+      \vdots  & \vdots  & \ddots & \vdots \\[3pt]
+      #7      & #8      & \cdots & #9
+    \end{array}
+  }
+}
+
+% n 次単位行列
+\newcommand{\NthUnitMatrix}{
+  \Pmatrix{
+    \begin{array}{ccccc}
+              1 &   &         &         & \\
+                & 1 &         &         & \hsymb{O} \\
+                &   & \ddots  &         & \\
+      \hsymb{O} &   &         & \ddots  & \\
+                &   &         &         & 1
+    \end{array}
+  }
+}
+
+% n 次正方行列（標準）
+\newcommand{\NthSquareMatrixGeneral}[1]{
+  \NthSquareMatrix{%
+    {#1}_{11}}{{#1}_{12}}{{#1}_{1n}}{%
+    {#1}_{21}}{{#1}_{22}}{{#1}_{2n}}{%
+    {#1}_{n1}}{{#1}_{n2}}{{#1}_{nn}}
+}
+
+% n 次正方行列（標準・転置）
+\newcommand{\NthSquareMatrixGeneralTransposed}[1]{
+  \NthSquareMatrix{%
+    {#1}_{11}}{{#1}_{21}}{{#1}_{n1}}{%
+    {#1}_{12}}{{#1}_{22}}{{#1}_{n2}}{%
+    {#1}_{1n}}{{#1}_{2n}}{{#1}_{nn}}
+}
+
+% n 次正方行列（標準・和）
+\newcommand{\NthSquareMatrixGeneralSum}[2]{
+  \NthSquareMatrix{%
+    {#1}_{11} + {#2}_{11}}{{#1}_{12} + {#2}_{12}}{{#1}_{13} + {#2}_{13}}{%
+    {#1}_{21} + {#2}_{21}}{{#1}_{22} + {#2}_{22}}{{#1}_{23} + {#2}_{23}}{%
+    {#1}_{31} + {#2}_{31}}{{#1}_{32} + {#2}_{32}}{{#1}_{33} + {#2}_{33}}
+}
+
+% -------- Pauli 行列
+
+\newcommand{\PauliMatrixI}{\SecondSquareMatrixR{0}{1}{1}{0}}
+\newcommand{\PauliMatrixII}{\SecondSquareMatrixR{0}{-i}{i}{0}}
+\newcommand{\PauliMatrixIII}{\SecondSquareMatrixR{1}{0}{0}{-1}}
