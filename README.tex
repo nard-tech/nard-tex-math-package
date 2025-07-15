@@ -8,6 +8,7 @@
 \usepackage{commands/operators}
 \usepackage{commands/utils}
 \usepackage{commands/vector}
+\usepackage{commands/matrix}
 \usepackage{frac_style}
 
 \usepackage{package/nard-tex-textbook-package/commands/headers_ja}
@@ -164,7 +165,7 @@
   \subsection{行列}
 
   \begin{itemize}
-    \item \verb|\Trace| - $ \Trace $ \footnote{\verb|\Tr| を別で使いたいのでコマンドをこのような名前にしている。}
+    \item \verb|\Trace| \footnote{\verb|\Tr| を別で使いたいのでコマンドをこのような名前にしている。（cf.  トレース \verb|\Tr| p.\pageref{Tr}）} - $ \Trace $
     \item \verb|\SO| - $ \SO $
     \item \verb|\SU| - $ \SU $
   \end{itemize}
@@ -511,6 +512,289 @@
           \item \verb|\ScalarTripleProduct{\VectorArrow{a}}{\VectorArrow{b}}{\VectorArrow{c}}| - \\ $\ScalarTripleProduct{\VectorArrow{a}}{\VectorArrow{b}}{\VectorArrow{c}}$
         \end{itemize}
         % \,
+      \end{quote}
+    %
+  \end{itemize}
+
+  \section{commands/matrix}
+
+  \verb|commands/matrix| パッケージを読み込むと、以下のような行列に関するコマンドを使うことができる。
+
+  \begin{itemize}
+    \item \verb|\hsymb| - 大きな O など（cf. $n$ 次単位行列 \verb|\NthUnitMatrix| p.\pageref{NthUnitMatrix}）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\hsymb{O}| - $\hsymb{O}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\MatrixSize| - 「$ m \times n $行列」
+      \begin{quote}
+        \Remark
+        \begin{quote}
+          テキストモードで使用する。
+        \end{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\MatrixSize{2}{3}| - \MatrixSize{2}{3}
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Pmatrix| - 丸括弧付き行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}| - $
+              \Pmatrix{
+                \begin{array}{cc}
+                  1 & 2 \\
+                  3 & 4
+                \end{array}
+              }
+            $
+          %
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\MatrixElement| - 行列の成分
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|$\MatrixElement{i}{j}$ 成分| - $\MatrixElement{i}{j}$ 成分
+          \item \verb|A = {\left( a_{ij} \right)}_{\MatrixElement{i}{j}}| - $A = {\left( a_{ij} \right)}_{\MatrixElement{i}{j}}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Det| - 行列式
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Det{A}| - $\Det{A}$
+          \item \verb|\Det{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}| - $\Det{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\Tr| - トレース \label{Tr}
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\Tr{A}| - $\Tr{A}$
+          \item \verb|\Tr{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}| - $\Tr{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\TransposedMatrix| - 転置行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\TransposedMatrix{A}| - $\TransposedMatrix{A}$
+          \item \verb|\TransposedMatrix{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}| \\ $\TransposedMatrix{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}$
+        \end{itemize}
+      \end{quote}
+    %
+    \newpage
+    %
+    \item \verb|\AdjointMatrix| - 随伴行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\AdjointMatrix{A}| - $\AdjointMatrix{A}$
+          \item \verb|\AdjointMatrix{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}| - \\ $\AdjointMatrix{\Pmatrix{\begin{array}{cc} 1 & 2 \\ 3 & 4 \end{array}}}$
+        \end{itemize}
+      \end{quote}
+    %
+  \end{itemize}
+
+  \newpage
+
+  \subsection{2次正方行列}
+
+  \begin{itemize}
+    \item \verb|\SecondSquareMatrix|, \verb|\SecondSquareMatrixR| - 2次正方行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\SecondSquareMatrix{1}{2}{3}{4}| - $\SecondSquareMatrix{1}{2}{3}{4}$
+          \item \verb|\SecondSquareMatrix{1}{2}{-3}{-4}| - $\SecondSquareMatrix{1}{2}{-3}{-4}$
+          \item \verb|\SecondSquareMatrixR{1}{2}{-3}{-4}| - $\SecondSquareMatrixR{1}{2}{-3}{-4}$
+          \item \verb|\SecondSquareMatrix[rr]{1}{2}{-3}{-4}| - $\SecondSquareMatrix[rr]{1}{2}{-3}{-4}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\SecondUnitMatrix| - 2次単位行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\SecondUnitMatrix| - $\SecondUnitMatrix$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\SecondSquareMatrixGeneral| - 2次正方行列（標準）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\SecondSquareMatrixGeneral{a}| - $\SecondSquareMatrixGeneral{a}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\SecondSquareMatrixGeneralTransposed| - 2次正方行列（標準・転置）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\SecondSquareMatrixGeneralTransposed{a}| - $\SecondSquareMatrixGeneralTransposed{a}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\SecondSquareMatrixGeneralSum| - 2次正方行列（標準・和）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\SecondSquareMatrixGeneralSum{a}{b}| - $\SecondSquareMatrixGeneralSum{a}{b}$
+        \end{itemize}
+      \end{quote}
+    %
+  \end{itemize}
+
+  \newpage
+
+  \subsection{3次正方行列}
+
+  \begin{itemize}
+    \item \verb|\ThirdSquareMatrix|, \verb|\ThirdSquareMatrixR| - 3次正方行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ThirdSquareMatrix{1}{2}{3}{4}{5}{6}{7}{8}{9}| - $\ThirdSquareMatrix{1}{2}{3}{4}{5}{6}{7}{8}{9}$
+          \item \verb|\ThirdSquareMatrix{1}{-2}{-3}{-4}{5}{6}{-7}{-8}{9}| - $\ThirdSquareMatrix{1}{-2}{-3}{-4}{5}{6}{-7}{-8}{9}$
+          \item \verb|\ThirdSquareMatrixR{1}{-2}{-3}{-4}{5}{6}{-7}{-8}{9}| - $\ThirdSquareMatrixR{1}{-2}{-3}{-4}{5}{6}{-7}{-8}{9}$
+        \end{itemize}
+        \Remark
+        \begin{quote}
+          引数の個数の都合上、\verb|\ThirdSquareMatrix[rrr]| は使えない。
+        \end{quote}
+      \end{quote}
+    %
+    \item \verb|\ThirdUnitMatrix| - 3次単位行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ThirdUnitMatrix| - $\ThirdUnitMatrix$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\ThirdSquareMatrixGeneral| - 3次正方行列（標準）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ThirdSquareMatrixGeneral{a}| - $\ThirdSquareMatrixGeneral{a}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\ThirdSquareMatrixGeneralTransposed| - 3次正方行列（標準・転置）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ThirdSquareMatrixGeneralTransposed{a}| - $\ThirdSquareMatrixGeneralTransposed{a}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\ThirdSquareMatrixGeneralSum| - 3次正方行列（標準・和）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ThirdSquareMatrixGeneralSum{a}{b}| - $\ThirdSquareMatrixGeneralSum{a}{b}$
+        \end{itemize}
+      \end{quote}
+    %
+    \newpage
+    %
+    \item \verb|\ThirdDeterminantGeneral| - 3次正方行列 行列式（標準）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ThirdDeterminantGeneral{a}| - \\ $\ThirdDeterminantGeneral{a}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item 3次正方行列 小行列式
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\ThirdMinorDeterminantIi{a}| - $\ThirdMinorDeterminantIi{a}$
+          \item \verb|\ThirdMinorDeterminantIii{a}| - $\ThirdMinorDeterminantIii{a}$
+          \item \verb|\ThirdMinorDeterminantIiii{a}| - $\ThirdMinorDeterminantIiii{a}$
+          \item \verb|\ThirdMinorDeterminantIIi{a}| - $\ThirdMinorDeterminantIIi{a}$
+          \item \verb|\ThirdMinorDeterminantIIii{a}| - $\ThirdMinorDeterminantIIii{a}$
+          \item \verb|\ThirdMinorDeterminantIIiii{a}| - $\ThirdMinorDeterminantIIiii{a}$
+          \item \verb|\ThirdMinorDeterminantIIIi{a}| - $\ThirdMinorDeterminantIIIi{a}$
+          \item \verb|\ThirdMinorDeterminantIIIii{a}| - $\ThirdMinorDeterminantIIIii{a}$
+          \item \verb|\ThirdMinorDeterminantIIIiii{a}| - $\ThirdMinorDeterminantIIIiii{a}$
+        \end{itemize}
+      \end{quote}
+    %
+  \end{itemize}
+
+  \newpage
+
+  \subsection{$n$ 次正方行列}
+
+  \begin{itemize}
+    \item \verb|\NthSquareMatrix|, \verb|\NthSquareMatrixR| - $n$ 次正方行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\NthSquareMatrix{1}{2}{3}{4}{5}{6}{7}{8}{9}| - $\NthSquareMatrix{1}{2}{3}{4}{5}{6}{7}{8}{9}$
+          \item \verb|\NthSquareMatrix{1}{-2}{-3}{-4}{5}{-6}{-7}{8}{-9}| - $\NthSquareMatrix{1}{-2}{-3}{-4}{5}{-6}{-7}{8}{-9}$
+          \item \verb|\NthSquareMatrixR{1}{-2}{-3}{-4}{5}{-6}{-7}{8}{-9}| - $\NthSquareMatrixR{1}{-2}{-3}{-4}{5}{-6}{-7}{8}{-9}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\NthUnitMatrix| - $n$ 次単位行列 \label{NthUnitMatrix}
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\NthUnitMatrix| - $\NthUnitMatrix$
+        \end{itemize}
+      \end{quote}
+
+    \item \verb|\NthUnitMatrix| - $n$ 次正方行列（標準）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\NthSquareMatrixGeneral{a}| - $\NthSquareMatrixGeneral{a}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\NthSquareMatrixGeneralTransposed| - $n$ 次正方行列（標準・転置）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\NthSquareMatrixGeneralTransposed{a}| - $\NthSquareMatrixGeneralTransposed{a}$
+        \end{itemize}
+      \end{quote}
+    %
+    \item \verb|\NthSquareMatrixGeneralSum| - $n$ 次正方行列（標準・和）
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\NthSquareMatrixGeneralSum{a}{b}| - $\NthSquareMatrixGeneralSum{a}{b}$
+        \end{itemize}
+      \end{quote}
+    %
+  \end{itemize}
+
+  \subsection{Pauli 行列}
+
+  \begin{itemize}
+    \item \verb|\PauliMatrixI|, \verb|\PauliMatrixII|, \verb|\PauliMatrixIII| - Pauli（パウリ）行列
+      \begin{quote}
+        \Example
+        \begin{itemize}
+          \item \verb|\PauliMatrixI| - $\PauliMatrixI$
+          \item \verb|\PauliMatrixII| - $\PauliMatrixII$
+          \item \verb|\PauliMatrixIII| - $\PauliMatrixIII$
+        \end{itemize}
       \end{quote}
     %
   \end{itemize}
