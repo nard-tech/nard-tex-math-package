@@ -1,0 +1,8 @@
+% 数式番号の設定
+\makeatletter
+
+\renewcommand{\theequation}{%
+  \thesubsection.\arabic{equation}}
+\@addtoreset{equation}{subsection}
+
+\makeatother
