@@ -1,0 +1,26 @@
+% 数学記号一覧の出力
+\makeatletter
+
+% 拡張子loaというファイルを書きだす
+\newcommand{\techterm}[2]{%
+\addcontentsline{loa}{techt}{\protect\makebox[3cm][l]{#1}#2}#1%
+}
+
+\newcommand{\listoftechterms}{%
+\chapter*{数学記号一覧}
+{\footnotesize
+	\label{List_of_Tech_Terms}
+	\begin{quote}
+		\begin{tabular}{lll}
+			参照：	& ギリシア文字 	& （\ref{Greek_Alphabet}節，p.\pageref{Greek_Alphabet}）\\
+			\, 		& 数学記号		& （\ref{Mathematical_Symbol}節，p.\pageref{Mathematical_Symbol}）
+		\end{tabular}
+	\end{quote}
+}
+\qquad \\
+\@starttoc{loa}% 拡張子loaというファイルを読み込む
+}
+
+\newcommand\l@techt[2]{\par\noindent #1, #2}
+
+\makeatother
