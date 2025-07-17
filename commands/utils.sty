@@ -91,8 +91,8 @@
 % 指数関数
 \newcommand{\Exp}[1]{e^{#1}}
 
-% 1, 2, 3変数関数
-\NewDocumentCommand{\Function}{m o o o}{%
+% 1 - 4変数関数
+\NewDocumentCommand{\Function}{m o o o o}{%
   #1%
   \IfNoValueTF{#2}{%
     % 第2引数（関数の変数1）が存在しないとき - 何もしない
@@ -106,7 +106,12 @@
             % 第4引数（関数の変数3）が存在しないとき
               \bigl( #2, #3 \bigr)}{%
             % 第4引数（関数の変数3）が存在するとき
-              \bigl( #2, #3, #4 \bigr)}
+              \IfNoValueTF{#5}{%
+                % 第5引数（関数の変数4）が存在しないとき
+                  \bigl( #2, #3, #4 \bigr)}{%
+                % 第5引数（関数の変数4）が存在するとき
+                  \bigl( #2, #3, #4, #5 \bigr)}
+              }
       }
   }
 }
