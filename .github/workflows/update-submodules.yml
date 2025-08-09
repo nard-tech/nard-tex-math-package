@@ -1,13 +1,15 @@
 name: Update submodules
 on:
   workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
 jobs:
   update_submodules:
     name: Update submodules
     runs-on: ubuntu-latest
     env:
       TZ: "Asia/Tokyo"
-    if: contains(github.event.head_commit.message, '[ci skip]') == false
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,7 +20,7 @@ jobs:
 
       - name: Set Git status
         id: set-git-status
-        run: echo "CHANGED=$(git status --porcelain | grep -q . && echo 'yes' || echo 'no')" >> $GITHUB_OUTPUT
+        run: echo "CHANGED=$(git status --porcelain | grep -q . && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
 
       - name: Get current datetime
         id: set-datetime
@@ -43,7 +45,7 @@ jobs:
           echo BRANCH_NAME: $BRANCH_NAME
 
       - name: Commit changes
-        if: steps.set-git-status.outputs.CHANGED == 'yes'
+        if: steps.set-git-status.outputs.CHANGED == 'true'
         env:
           CURRENT_TIME: ${{ steps.set-datetime.outputs.CURRENT_TIME }}
           BRANCH_NAME: ${{ steps.set-branch-name.outputs.BRANCH_NAME }}
@@ -55,14 +57,14 @@ jobs:
           git commit -m "Update submodules at $CURRENT_TIME"
 
       - name: Push branch
-        if: steps.set-git-status.outputs.CHANGED == 'yes'
+        if: steps.set-git-status.outputs.CHANGED == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.set-branch-name.outputs.BRANCH_NAME }}
 
       - name: Create Pull Request
-        if: steps.set-git-status.outputs.CHANGED == 'yes'
+        if: steps.set-git-status.outputs.CHANGED == 'true'
         run: |
           gh pr create -B main -t "Update submodules" -b "サブモジュールの自動更新" --head $(git branch --show-current)
         env:
