@@ -16,7 +16,12 @@ jobs:
           submodules: recursive
 
       - name: Update submodules
-        run: git submodule update --remote --recursive
+        run: |
+          git submodule update --remote --recursive
+          if [ $? -ne 0 ]; then
+            echo "Submodule update failed"
+            exit 1
+          fi
 
       - name: Set Git status
         id: set-git-status
