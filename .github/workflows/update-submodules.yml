@@ -58,7 +58,7 @@ jobs:
 
       - name: Push branch
         if: steps.set-git-status.outputs.CHANGED == 'true'
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.set-branch-name.outputs.BRANCH_NAME }}
