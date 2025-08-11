@@ -76,4 +76,4 @@ jobs:
         run: |
           gh pr create -B main -t "Update submodules" -b "サブモジュールの自動更新" --head $(git branch --show-current)
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.NARD_TEX_PACKAGES_TOKEN }}
