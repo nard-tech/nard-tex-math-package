@@ -20,11 +20,7 @@ jobs:
 
       - name: Update submodules
         run: |
-          git submodule update --remote --recursive
-          if [ $? -ne 0 ]; then
-            echo "Submodule update failed"
-            exit 1
-          fi
+          git submodule update --remote --recursive || { echo "Submodule update failed"; exit 1; }
 
       - name: Set Git status
         id: set-git-status
@@ -74,6 +70,6 @@ jobs:
       - name: Create Pull Request
         if: steps.set-git-status.outputs.CHANGED == 'true'
         run: |
-          gh pr create -B main -t "Update submodules" -b "サブモジュールの自動更新" --head $(git branch --show-current)
+          gh pr create -B main -t "Update submodules" -b "サブモジュールの自動更新"
         env:
           GH_TOKEN: ${{ secrets.NARD_TEX_PACKAGES_TOKEN }}
