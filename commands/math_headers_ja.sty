@@ -11,7 +11,7 @@
   \textgt{%
     \colorbox[rgb]{0.67,1.00,0.85}{\,公理\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
 
@@ -20,7 +20,7 @@
   \textgt{%
     \colorbox[rgb]{0.67,1.00,0.85}{\,定義\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
 
@@ -29,7 +29,7 @@
   \textgt{%
     \colorbox[rgb]{0.67,1.00,0.85}{\,公式\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
 
@@ -38,7 +38,7 @@
   \textgt{%
     \colorbox[rgb]{0.85,1,1}{\,定理\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
 
@@ -47,7 +47,7 @@
   \textgt{%
     \colorbox[rgb]{0.85,1,1}{\,補題\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
 
@@ -56,7 +56,7 @@
   \textgt{%
     \colorbox[rgb]{0.85,1,1}{\,命題\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
 
@@ -65,7 +65,7 @@
   \textgt{%
     \colorbox[rgb]{0.85,1,1}{\,\,\,\,系\,\,\,\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
 
@@ -74,6 +74,6 @@
   \textgt{%
     \colorbox[rgb]{0.9,0.9,0.9}{\,証明\,}%
     \ifthenelse{\equal{#1}{}}{}{\,\,\,\textsf{{#1}}} % if 第1引数（番号）について
-    \ifthenelse{\equal{#2}{}}{}{（{#2}）} % if 第2引数（内容）について
+    \ifthenelse{\equal{#2}{}}{}{#2} % if 第2引数（内容）について
   }
 }
